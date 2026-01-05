@@ -1,0 +1,77 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 游戏标题 -->
+  <view class="header">
+    <text class="title">拼图游戏</text>
+    <text class="subtitle">移动图片完成拼图</text>
+  </view>
+  
+  <!-- 游戏信息 -->
+  <view class="game-info">
+    <view class="info-item">
+      <text class="info-label">步数:</text>
+      <text class="info-value">{{stepCount}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">时间:</text>
+      <text class="info-value">{{formattedTime}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">难度:</text>
+      <text class="info-value">3×3</text>
+    </view>
+  </view>
+  
+  <!-- 拼图区域 -->
+   <view class="puzzle-container">
+    <view class="puzzle-grid">
+      <block wx:for="{{puzzlePieces}}" wx:key="index">
+        <view 
+          class="puzzle-piece {{item.isEmpty ? 'empty' : ''}} {{isCompleted ? 'completed' : ''}}"
+          data-index="{{index}}"
+          bindtap="movePiece"
+          style="{{item.isEmpty ? '' : 'background-image: url(' + item.image + '); background-size: 300% 300%; background-position: ' + item.bgPosX + '% ' + item.bgPosY + '%; background-repeat: no-repeat'}}"
+        >
+          <text class="piece-number" wx:if="{{!item.isEmpty && showNumbers}}">{{item.number}}</text>
+        </view>
+      </block>
+    </view>
+  </view> 
+
+
+  <!-- 控制区域 -->
+  <view class="control-panel">
+    <button class="btn restart-btn" bindtap="restartGame">重新开始</button>
+    <button class="btn hint-btn" bindtap="toggleNumbers">
+      {{showNumbers ? '隐藏数字' : '显示数字'}}
+    </button>
+    <button class="btn shuffle-btn" bindtap="shufflePuzzle">随机打乱</button>
+  </view>
+  
+  <!-- 完成提示 -->
+  <view class="success-modal" wx:if="{{isCompleted}}">
+    <view class="modal-content">
+      <text class="success-title">🎉 拼图完成！</text>
+      <text class="success-text">恭喜你完成了拼图！</text>
+      <text class="success-text">用时: {{formattedTime}}</text>
+      <text class="success-text">步数: {{stepCount}}</text>
+      <view class="modal-buttons">
+        <button class="btn modal-btn" bindtap="restartGame">再玩一次</button>
+        <button class="btn modal-btn secondary" bindtap="closeModal">继续游戏</button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 游戏控制 -->
+  <view class="game-controls">
+    <button class="control-btn" bindtap="restartGame">重新开始</button>
+    <button class="control-btn" bindtap="toggleNumbers">{{showNumbers ? '隐藏' : '显示'}}数字</button>
+    <navigator url="/pages/upload/upload" class="control-btn nav-btn">自定义拼图</navigator>
+  </view>
+
+  <!-- 游戏说明 -->
+  <view class="instructions">
+    <text class="instructions-title">游戏说明：</text>
+    <text class="instructions-text">点击图片块，将其移动到相邻的空格中，按正确顺序排列所有图片即可完成拼图。</text>
+  </view>
+</view>

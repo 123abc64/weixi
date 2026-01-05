@@ -1,0 +1,527 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20rpx;
+}
+
+/* 头部样式 */
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 上传区域 */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.upload-box {
+  width: 600rpx;
+  height: 600rpx;
+  border-radius: 20rpx;
+  background: rgba(255, 255, 255, 0.1);
+  border: 3rpx dashed rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40rpx;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.upload-box:active {
+  transform: scale(0.98);
+  box-shadow: 0 15rpx 35rpx rgba(0, 0, 0, 0.3);
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 17rpx;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.upload-text {
+  font-size: 32rpx;
+  color: white;
+  margin-bottom: 10rpx;
+  font-weight: bold;
+}
+
+.upload-tips {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  max-width: 400rpx;
+}
+
+.start-btn {
+  width: 400rpx;
+  height: 80rpx;
+  background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+  border-radius: 40rpx;
+  color: white;
+  font-size: 28rpx;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 20rpx rgba(238, 90, 111, 0.4);
+  transition: all 0.3s ease;
+}
+
+.start-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 15rpx rgba(238, 90, 111, 0.6);
+}
+
+.start-btn[disabled] {
+  background: #ccc;
+  box-shadow: none;
+  transform: none;
+}
+
+/* 游戏区域 */
+.game-section {
+  margin-top: 20rpx;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15rpx;
+  padding: 20rpx;
+  margin-bottom: 30rpx;
+  backdrop-filter: blur(10px);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  margin-bottom: 5rpx;
+}
+
+.info-value {
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.3);
+}
+
+/* 游戏控制 */
+.game-controls {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30rpx;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  flex: 1;
+  margin: 5rpx;
+  min-width: 120rpx;
+  height: 60rpx;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  border-radius: 30rpx;
+  color: white;
+  font-size: 24rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.restart-btn {
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+/* 拼图容器 */
+.puzzle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+
+.puzzle-grid {
+  width: 600rpx;
+  height: 600rpx;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3rpx;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15rpx;
+  padding: 8rpx;
+  box-shadow: 0 15rpx 35rpx rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+/* 拼图块 - 关键样式修复 */
+.puzzle-piece {
+  border-radius: 8rpx;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.puzzle-piece:not(.empty) {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover !important; /* 关键：确保图片完整显示 */
+  border: 1rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.puzzle-piece:not(.empty):active {
+  transform: scale(0.92);
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.puzzle-piece.empty {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2rpx dashed rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+}
+
+.puzzle-piece.show-number .piece-number {
+  display: block;
+}
+
+.piece-number {
+  position: absolute;
+  top: 8rpx;
+  left: 8rpx;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+  color: white;
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 18rpx;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  font-weight: bold;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.4);
+  z-index: 5;
+}
+
+.empty-mark {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.back-btn {
+  width: 300rpx;
+  height: 60rpx;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  border-radius: 30rpx;
+  color: white;
+  font-size: 28rpx;
+  margin: 30rpx auto 0;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.back-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* 弹窗样式 */
+.preview-modal, .victory-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 600rpx;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-close {
+  font-size: 40rpx;
+  color: #999;
+  padding: 0 10rpx;
+  cursor: pointer;
+}
+
+.preview-full-image {
+  width: 100%;
+  max-height: 500rpx;
+  border-radius: 10rpx;
+}
+
+.victory-content {
+  text-align: center;
+  padding: 40rpx 30rpx;
+}
+
+.victory-header {
+  margin-bottom: 30rpx;
+}
+
+.victory-icon {
+  font-size: 80rpx;
+  display: block;
+  margin-bottom: 20rpx;
+  animation: bounce 1s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10rpx); }
+  60% { transform: translateY(-5rpx); }
+}
+
+.victory-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.victory-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 15rpx;
+  min-width: 120rpx;
+}
+
+.stat-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 10rpx;
+  text-shadow: 0 2rpx 4rpx rgba(102, 126, 234, 0.3);
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+  font-weight: bold;
+}
+
+.victory-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.victory-btn {
+  flex: 1;
+  height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.victory-btn.primary {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 8rpx 20rpx rgba(102, 126, 234, 0.4);
+}
+
+.victory-btn.secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: 2rpx solid rgba(102, 126, 234, 0.3);
+}
+
+.victory-btn:active {
+  transform: scale(0.95);
+}
+
+/* 加载提示 */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20rpx;
+  backdrop-filter: blur(10px);
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 6rpx solid rgba(255, 255, 255, 0.3);
+  border-top: 6rpx solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+.loading-text {
+  color: white;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.progress-bar {
+  width: 300rpx;
+  height: 8rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  border-radius: 4rpx;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10rpx rgba(79, 172, 254, 0.5);
+}
+
+/* 关键：Canvas样式 - 解决错位的根本配置 */
+#splitCanvas {
+  /* 必须设置固定的Canvas尺寸 */
+  width: 300px !important;
+  height: 300px !important;
+  position: fixed !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  z-index: -1 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

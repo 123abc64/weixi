@@ -1,0 +1,14 @@
+<view class="container">
+  <text class="title">图片调试页面</text>
+  <text class="subtitle">查看控制台日志了解详情</text>
+  
+  <view class="debug-section">
+    <text class="section-title">直接图片测试:</text>
+    <image src="/images/puzzle/1.jpg" class="test-image" mode="aspectFill" />
+  </view>
+  
+  <view class="debug-section">
+    <text class="section-title">CSS背景测试:</text>
+    <view class="test-bg" style="background-image: url('/images/puzzle/1.jpg')"></view>
+  </view>
+</view>

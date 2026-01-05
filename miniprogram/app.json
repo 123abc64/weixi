@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/debug",
+    "pages/upload/upload"
+  ],
+  "subPackages": [
+    {
+      "root": "subpackage",
+      "pages": [
+        "pages/imageLoader/imageLoader"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4a90e2",
+    "navigationBarTitleText": "拼图游戏",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

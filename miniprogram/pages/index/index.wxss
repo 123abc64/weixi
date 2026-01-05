@@ -1,0 +1,298 @@
+/* pages/index/index.wxss */
+
+.container {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 头部样式 */
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: white;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 游戏信息 */
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.info-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #4a90e2;
+}
+
+/* 拼图区域 */
+.puzzle-container {
+  width: 650rpx;
+  height: 650rpx;
+  margin: 20rpx auto 40rpx;
+}
+
+
+
+.puzzle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e0e0e0;
+  border-radius: 10rpx;
+  overflow: hidden;
+  box-shadow: 0 20rpx 40rpx rgba(0, 0, 0, 0.2);
+}
+
+.puzzle-piece {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #4a90e2;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1rpx solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.puzzle-piece:active {
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+.puzzle-piece.empty {
+  background-color: #f8f8f8;
+  border: 1rpx dashed #ddd;
+  opacity: 0.3;
+}
+
+.puzzle-piece.completed {
+  animation: pulse 1s ease-in-out;
+}
+
+.puzzle-piece.moving {
+  transition: all 0.2s ease-out;
+  z-index: 10;
+}
+
+/* 添加移动后的平滑效果 */
+.puzzle-piece {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.piece-number {
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.7);
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 控制面板 */
+.control-panel {
+  display: flex;
+  justify-content: center;
+  gap: 30rpx;
+  margin-bottom: 40rpx;
+  width: 90%;
+}
+
+.btn {
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  border: none;
+  border-radius: 50rpx;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-weight: bold;
+}
+
+.restart-btn {
+  background: linear-gradient(135deg, #FF416C, #FF4B2B);
+}
+
+.hint-btn {
+  background: linear-gradient(135deg, #36D1DC, #5B86E5);
+}
+
+.shuffle-btn {
+  background: linear-gradient(135deg, #7F00FF, #E100FF);
+}
+
+
+
+.btn:active {
+  transform: translateY(2rpx);
+  opacity: 0.9;
+}
+
+/* 成功提示 */
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 60rpx 40rpx;
+  border-radius: 30rpx;
+  width: 80%;
+  text-align: center;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100rpx);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.success-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #4a90e2;
+  display: block;
+  margin-bottom: 30rpx;
+}
+
+.success-text {
+  font-size: 32rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30rpx;
+  margin-top: 40rpx;
+}
+
+.modal-btn {
+  flex: 1;
+}
+
+.modal-btn.secondary {
+  background: linear-gradient(135deg, #999, #666);
+}
+
+/* 游戏说明 */
+.instructions {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30rpx;
+  border-radius: 20rpx;
+  width: 90%;
+  margin-top: 20rpx;
+}
+
+.instructions-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #4a90e2;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.instructions-text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 游戏控制区域 */
+.game-controls {
+  display: flex;
+  justify-content: space-around;
+  margin: 30rpx 0;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  color: white;
+  border: none;
+  border-radius: 25rpx;
+  padding: 15rpx 30rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 15rpx rgba(79, 172, 254, 0.3);
+  margin: 5rpx;
+  min-width: 120rpx;
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+.nav-btn {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  box-shadow: 0 4rpx 15rpx rgba(102, 126, 234, 0.3);
+}

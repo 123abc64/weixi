@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "自定义拼图-修复版",
+  "navigationBarBackgroundColor": "#667eea",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#667eea",
+  "enablePullDownRefresh": false,
+  "backgroundColorTextStyle": "light"
+}
